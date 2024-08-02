@@ -2,7 +2,11 @@
 
 A simple app to screen people against the OFAC Specially Designated Nationals (SDN) list.
 
-## Setup
+## Access the App
+
+The app is deployed to Vercel and can be accessed at [https://ofac-sdn-screening.vercel.app/](https://ofac-sdn-screening.vercel.app/).
+
+## Local Setup
 
 1. Clone the repository
 2. Install dependencies: `npm install`
@@ -11,10 +15,9 @@ A simple app to screen people against the OFAC Specially Designated Nationals (S
    - Add your OFAC API key: `OFAC_API_KEY=your_api_key_here`
 4. Run the development server: `npm run dev`
 
-## Usage
+## Local Usage
 
 Navigate to `http://localhost:3000` and use the form to screen people.
-
 
 ## Production Deployment
 
