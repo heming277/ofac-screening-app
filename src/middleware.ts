@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Simple in-memory store for rate limiting
-const WINDOW_SIZE = 60 * 1000; // 1 minute in milliseconds
+// Simple in-memory store for rate limiting for local testing
+// We should use redis on its own server in real production enviornment
+const WINDOW_SIZE = 60 * 1000; // 1 minute in milliseconds for local testing
 const MAX_REQUESTS = 10;
 const store: { [key: string]: number[] } = {};
 
