@@ -1,7 +1,8 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
+export const runtime = 'edge';
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const { fullName, birthYear, country } = await request.json()
 
   const apiKey = process.env.OFAC_API_KEY
@@ -39,8 +40,6 @@ export async function POST(request: Request) {
 
     const data = await response.json()
 
-    console.log('API Response:', JSON.stringify(data, null, 2))
-
     if (data.error) {
       throw new Error(data.errorMessage || 'Unknown error occurred')
     }
@@ -77,19 +76,16 @@ export async function POST(request: Request) {
 
     const result = matches.name || matches.birthYear || matches.country ? 'Hit' : 'Clear'
 
-    console.log('Matches:', matches)
-    console.log('Result:', result)
-
-
+    console.log('Screening request processed', { fullName, birthYear, country, result, matches })
 
     return NextResponse.json({ error: false, result, matches })
   } catch (error) {
-    console.error(error)
+    console.error('Error during screening', { error, fullName, birthYear, country })
     return NextResponse.json({ 
       error: true, 
       errorMessage: 'An error occurred while searching',
       result: 'Clear', 
       matches: { name: false, birthYear: false, country: false }
-    })
+    }, { status: 500 })
   }
 }
