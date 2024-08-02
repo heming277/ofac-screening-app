@@ -4,7 +4,7 @@ A simple app to screen people against the OFAC Specially Designated Nationals (S
 
 ## Access the App
 
-The app is deployed to Vercel and can be accessed at [https://ofac-sdn-screening.vercel.app/](https://ofac-sdn-screening.vercel.app/).
+The app is deployed to Vercel and can be accessed at [https://ofac-screening-app-seven.vercel.app](https://ofac-screening-app-seven.vercel.app).
 
 ## Local Setup
 
